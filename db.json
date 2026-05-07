@@ -977,5 +977,15 @@
       "name": "기타",
       "type": "expense"
     }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "username": "admin",
+      "email": "admin@moneybook.com",
+      "password": "admin1234",
+      "name": "관리자",
+      "createdAt": "2026-01-01T00:00:00"
+    }
   ]
 }
