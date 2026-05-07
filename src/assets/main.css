@@ -73,9 +73,169 @@ body { margin: 0; background: var(--bg); color: var(--text); font-family: 'Segoe
 .btn-primary { background: var(--primary); border-color: var(--primary); }
 .btn-primary:hover { background: #4338ca; border-color: #4338ca; }
 
+/* ── 사이드바 사용자 영역 ─────────────────────────── */
+.sidebar-user {
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+  margin-top: auto;
+  margin-bottom: .75rem;
+  padding: .75rem .6rem;
+  background: rgba(255,255,255,.07);
+  border-radius: 10px;
+}
+.sidebar-user-avatar {
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #818cf8, #6366f1);
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 700; font-size: 1rem; color: #fff;
+  flex-shrink: 0;
+}
+.sidebar-user-info { flex: 1; min-width: 0; }
+.sidebar-user-name  { font-size: .85rem; font-weight: 600; color: #fff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.sidebar-user-email { font-size: .7rem; color: rgba(255,255,255,.55); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.sidebar-logout-btn {
+  background: none; border: none; cursor: pointer;
+  color: rgba(255,255,255,.6);
+  padding: .25rem .4rem; border-radius: 6px;
+  transition: all .2s; flex-shrink: 0;
+}
+.sidebar-logout-btn:hover { color: #f87171; background: rgba(248,113,113,.15); }
+
+/* ── Auth 페이지 ──────────────────────────────────── */
+.auth-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #1e1b4b 0%, #312e81 50%, #4f46e5 100%);
+  padding: 1.5rem;
+}
+.auth-card {
+  background: #fff;
+  border-radius: 20px;
+  padding: 2.5rem 2rem;
+  width: 100%;
+  max-width: 420px;
+  box-shadow: 0 25px 50px rgba(0,0,0,.25);
+}
+
+/* 브랜드 */
+.auth-brand { text-align: center; margin-bottom: 1.5rem; }
+.auth-brand-icon {
+  width: 60px; height: 60px;
+  background: linear-gradient(135deg, #4f46e5, #818cf8);
+  border-radius: 16px;
+  display: inline-flex; align-items: center; justify-content: center;
+  font-size: 1.6rem; color: #fff;
+  margin-bottom: .6rem;
+  box-shadow: 0 8px 20px rgba(79,70,229,.35);
+}
+.auth-brand-title { font-size: 1.4rem; font-weight: 800; color: #1e1b4b; margin: 0; }
+.auth-brand-sub   { font-size: .75rem; color: #6b7280; margin: .1rem 0 0; }
+
+.auth-heading { font-size: 1.2rem; font-weight: 700; color: #111827; margin-bottom: .25rem; text-align: center; }
+.auth-desc    { font-size: .85rem; color: #6b7280; text-align: center; margin-bottom: 1.5rem; }
+
+/* 알림 */
+.auth-alert {
+  background: #fef2f2; color: #b91c1c; border: 1px solid #fecaca;
+  border-radius: 10px; padding: .7rem 1rem; font-size: .85rem;
+  margin-bottom: 1rem; display: flex; align-items: center; gap: .5rem;
+}
+
+/* 폼 필드 */
+.auth-field { margin-bottom: 1rem; }
+.auth-label { display: block; font-size: .8rem; font-weight: 600; color: #374151; margin-bottom: .35rem; }
+.auth-input-wrap { position: relative; }
+.auth-input-icon {
+  position: absolute; left: .85rem; top: 50%; transform: translateY(-50%);
+  color: #9ca3af; font-size: .85rem; pointer-events: none;
+}
+.auth-input {
+  width: 100%;
+  padding: .65rem 2.5rem .65rem 2.4rem;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 10px;
+  font-size: .9rem;
+  color: #111827;
+  background: #f9fafb;
+  outline: none;
+  transition: border-color .2s, box-shadow .2s;
+}
+.auth-input:focus {
+  border-color: #4f46e5;
+  box-shadow: 0 0 0 3px rgba(79,70,229,.12);
+  background: #fff;
+}
+.auth-input-error { border-color: #ef4444 !important; }
+.auth-input-toggle {
+  position: absolute; right: .75rem; top: 50%; transform: translateY(-50%);
+  background: none; border: none; cursor: pointer; color: #9ca3af;
+  padding: .2rem; font-size: .85rem;
+}
+.auth-input-toggle:hover { color: #4f46e5; }
+.auth-field-error { font-size: .75rem; color: #ef4444; margin: .3rem 0 0; }
+
+/* 버튼 */
+.auth-btn {
+  width: 100%;
+  padding: .75rem;
+  background: linear-gradient(135deg, #4f46e5, #6366f1);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-size: .95rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: .5rem;
+  transition: opacity .2s, transform .1s;
+  box-shadow: 0 4px 14px rgba(79,70,229,.35);
+}
+.auth-btn:hover:not(:disabled) { opacity: .92; transform: translateY(-1px); }
+.auth-btn:disabled { opacity: .65; cursor: not-allowed; }
+
+/* 구분선 */
+.auth-divider {
+  text-align: center; position: relative;
+  margin: 1.25rem 0 .75rem;
+  color: #d1d5db; font-size: .8rem;
+}
+.auth-divider::before, .auth-divider::after {
+  content: ''; position: absolute; top: 50%;
+  width: 42%; height: 1px; background: #e5e7eb;
+}
+.auth-divider::before { left: 0; }
+.auth-divider::after  { right: 0; }
+.auth-divider span { background: #fff; padding: 0 .75rem; color: #9ca3af; }
+
+.auth-switch { text-align: center; font-size: .875rem; color: #6b7280; margin: 0; }
+.auth-link { color: #4f46e5; font-weight: 600; text-decoration: none; }
+.auth-link:hover { text-decoration: underline; }
+
+/* 테스트 계정 안내 박스 */
+.auth-demo {
+  margin-top: 1.25rem;
+  background: #f0f9ff;
+  border: 1px dashed #bae6fd;
+  border-radius: 10px;
+  padding: .75rem 1rem;
+  font-size: .78rem;
+  color: #0369a1;
+}
+.auth-demo p { margin: .1rem 0; }
+.auth-demo code {
+  background: #e0f2fe; padding: .1rem .35rem;
+  border-radius: 4px; font-size: .78rem;
+}
+
+/* ── 반응형 ────────────────────────────────────────── */
 @media (max-width: 768px) {
   .sidebar { width: 70px; }
-  .brand-title, .brand-sub, .sidebar .nav-link span, .sidebar-footer { display: none; }
+  .brand-title, .brand-sub, .sidebar .nav-link span, .sidebar-footer,
+  .sidebar-user-info, .sidebar-user-email { display: none; }
   .sidebar .nav-link i { margin-right: 0; }
+  .sidebar-user { justify-content: center; padding: .5rem; }
   .main-content { padding: 1rem; }
 }
