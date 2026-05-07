@@ -1,3 +1,9 @@
+# md파일 수정했음. <br>
+
+- html태그를 일부 쓸 때는 한 줄을 떨어지게 해야함. <br>
+
+<hr>
+
 # 스마트 가계부 대시보드
 
 Vue 3 (Composition API) + Pinia + Bootstrap 5 + Google Charts + Font Awesome + json-server + axios 로 만든 가계부 SPA입니다.
@@ -42,6 +48,39 @@ src/
    ├─ Dashboard.vue     # 대시보드 (4개 통계 + 3개 차트 + 최근 거래)
    ├─ Transactions.vue  # 거래 내역 목록 (검색/필터/삭제)
    └─ AddTransaction.vue
+```
+
+## 컴포넌트 구성도
+
+```mermaid
+flowchart TD
+  subgraph App[Vue App]
+    Main[src/main.js] --> AppVue[src/App.vue]
+    AppVue --> Router[vue-router<br/>src/router/index.js]
+    Router --> Dash[src/views/Dashboard.vue]
+    Router --> TxList[src/views/Transactions.vue]
+    Router --> TxAdd[src/views/AddTransaction.vue]
+  end
+
+  subgraph UI[UI Components]
+    Stat[src/components/StatCard.vue]
+    Chart[src/components/GoogleChart.vue]
+  end
+
+  subgraph State[State / Data]
+    Store[Pinia Store<br/>src/stores/transaction.js]
+    Api[axios instance<br/>src/stores/api.js]
+    Server[json-server<br/>db.json :3001]
+  end
+
+  Dash --> Stat
+  Dash --> Chart
+
+  Dash --> Store
+  TxList --> Store
+  TxAdd --> Store
+
+  Store --> Api --> Server
 ```
 
 ## API 엔드포인트 (json-server)
